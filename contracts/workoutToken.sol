@@ -1026,21 +1026,20 @@ contract WorkoutToken is ERC20, Owner {
             confirmationStatus = 1;
             emit DistributionStatus('Waiting for confirmation');
         }else if(confirmationStatus==1 && initAddress!=msg.sender) {
-            uint256 amount = 1071428571000000000000000000;
-            _transfer(_msgSender(), trainEarn1Address, amount);
-            _transfer(_msgSender(), trainEarn2Address, amount);
-            _transfer(_msgSender(), trainEarn3Address, amount);
-            _transfer(_msgSender(), liq1Address, amount);
-            _transfer(_msgSender(), liq2Address, amount);
-            _transfer(_msgSender(), marketing1Address, amount);
-            _transfer(_msgSender(), marketing2Address, amount);
-            _transfer(_msgSender(), publicSaleAddress, amount);
-            _transfer(_msgSender(), dev1Address, amount);
-            _transfer(_msgSender(), dev2Address, amount);
-            _transfer(_msgSender(), team1Address, amount);
-            _transfer(_msgSender(), team2Address, amount);
-            _transfer(_msgSender(), advAddress, amount);
-            _transfer(_msgSender(), privAddress, 1071428577000000000000000000); //add the rest of the coins
+            _transfer(_msgSender(), trainEarn1Address, 1500000000000000000000000000);
+            _transfer(_msgSender(), trainEarn2Address, 1500000000000000000000000000);
+            _transfer(_msgSender(), trainEarn3Address, 1500000000000000000000000000);
+            _transfer(_msgSender(), liq1Address, 1500000000000000000000000000);
+            _transfer(_msgSender(), liq2Address, 1500000000000000000000000000);
+            _transfer(_msgSender(), marketing1Address, 1125000000000000000000000000);
+            _transfer(_msgSender(), marketing2Address, 1125000000000000000000000000);
+            _transfer(_msgSender(), publicSaleAddress, 1500000000000000000000000000);
+            _transfer(_msgSender(), dev1Address, 750000000000000000000000000);
+            _transfer(_msgSender(), dev2Address, 750000000000000000000000000);
+            _transfer(_msgSender(), team1Address, 750000000000000000000000000);
+            _transfer(_msgSender(), team2Address, 750000000000000000000000000);
+            _transfer(_msgSender(), advAddress, 450000000000000000000000000);
+            _transfer(_msgSender(), privAddress, 300000000000000000000000000);
 
             confirmationStatus = 2;
             emit DistributionStatus('Distribution initiated');
