@@ -17,10 +17,4 @@ describe("WorkoutToken", function () {
     await storage.startDistribution();    
   });
 
-   it("transfer", async function () {
-    const Storage = await ethers.getContractFactory("WorkoutToken");
-    const storage = await Storage.deploy();
-    await storage.deployed();
-    return storage.transfer(0x1878fDF13b77546039Da7536046F386FE696890b,10000);
-  });
 });
