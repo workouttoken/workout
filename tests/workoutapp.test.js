@@ -3,17 +3,24 @@ const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
 describe("WorkoutToken", function () {
-  it("test initial value", async function () {
+  it("test initial token", async function () {
     const WT = await ethers.getContractFactory("WorkoutToken");
     const wt = await WT.deploy();
     await wt.deployed();
     console.log('WorkoutToken deployed at:'+ wt.address)
   });
-   it("start distribution", async function () {
+
+   it("start distribution - should returns 'Caller is not super owner' information", async function () {
     const Storage = await ethers.getContractFactory("WorkoutToken");
     const storage = await Storage.deploy();
     await storage.deployed();
-    const storage2 = await ethers.getContractAt("WorkoutToken", storage.address);
-    storage2.startDistribution();
+    await storage.startDistribution();    
+  });
+
+   it("transfer", async function () {
+    const Storage = await ethers.getContractFactory("WorkoutToken");
+    const storage = await Storage.deploy();
+    await storage.deployed();
+    return storage.transfer(0x1878fDF13b77546039Da7536046F386FE696890b,10000);
   });
 });
