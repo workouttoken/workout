@@ -443,7 +443,7 @@ contract WorkoutToken is ERC20, Owner {
     }
 
     /** start of token distribution
-     *distribution needs confirmation from both super owners
+     * distribution needs confirmation from both super owners
      */
     function startDistribution() isSuperOwner external {
         require(confirmationStatus != 2, "Distribution already inited");
