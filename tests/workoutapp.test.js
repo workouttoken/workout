@@ -123,7 +123,7 @@ it("addRole (should be reverted)", async () => {
     const owner = '0x1234567890123456789012345678901234567890'; // Example address
 
     // delete owner address
-    await expect(wt.addRole('ROLE', owner)).to.be.reverted;
+    await expect(wt.addRole(2, owner)).to.be.reverted;
 });
 
 it("deleteRole (should be reverted)", async () => {
@@ -134,5 +134,18 @@ it("deleteRole (should be reverted)", async () => {
     const owner = '0x1234567890123456789012345678901234567890'; // Example address
 
     // delete owner address
-    await expect(wt.deleteRole('ROLE', owner)).to.be.reverted;
+    await expect(wt.deleteRole(3, owner)).to.be.reverted;
+});
+
+it("has Role test", async () => {
+    const WT = await ethers.getContractFactory("WorkoutToken");
+    const wt = await WT.deploy();
+    await wt.deployed();
+
+    const owner = '0xa60a4fe0591017233Ab3b3B7de028Db23Fa48300'; // owner address
+    const notOwner = '0x1234567890123456789012345678901234567890'; // Example address
+
+    // check roles
+    expect(await wt.hasRole('MAIN_OWNER', owner)).to.be.equal(true);
+    await expect(wt.hasRole('MAIN_OWNER', notOwner)).to.be.reverted;
 });
