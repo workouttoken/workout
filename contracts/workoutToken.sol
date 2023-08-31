@@ -786,65 +786,10 @@ contract Owner {
         }
         emit ListRolesForAddress(_addresses, _roles);
     }
-
-    // checking if address exists in ownerConfirmations variable
-    function checkAddingAddress(address _address, bool isAdding) private view returns(bool) {
-        for(uint i=0; i<ownerConfirmationList.length; ++i) {
-            if(ownerConfirmationList[i].addedAddress == _address 
-                && ownerConfirmationList[i].isAdding==isAdding
-                ) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    // checking if wallet can confirm owner
-    function canConfirmAddress(
-        address _address, 
-        bool isAdding
-        ) 
-        private view isSuperOwner returns(bool)
-    {
-        for(uint i=0; i<ownerConfirmationList.length; ++i) {
-            if(
-                    ownerConfirmationList[i].addedAddress == _address 
-                    && ownerConfirmationList[i].isAdding==isAdding 
-                    && ownerConfirmationList[i].addressSU!=msg.sender
-            ) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    // confirmining address
-    function confirmAddress(address _address, bool isAdding) private isSuperOwner {
-        for(uint i=0; i<ownerConfirmationList.length; ++i) {
-            if(
-                ownerConfirmationList[i].addedAddress==_address 
-                && ownerConfirmationList[i].isAdding==isAdding
-            ) {
-                ownerConfirmationList[i].isConfirmed = true;
-            }
-        }
-    }
-
-    // adding confirmation
-    function addConfirmation(address _address, bool isAdding) private isSuperOwner {
-        ownerConfirmationList.push(OwnerConfirmationStruct({
-            addedAddress: _address,
-            addressSU: msg.sender,
-            isConfirmed: false,
-            isAdding: isAdding
-        }));
-        emit WaitingForConfirmation('Address waiting for confirmation',_address);
-    }
 }
 
 contract WorkoutToken is ERC20, Owner {
 
-    using SafeMath for uint256;
     using Strings for uint256;
     using Strings for address;
 
