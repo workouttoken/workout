@@ -9,6 +9,7 @@ Prerequisites
 Installation
 
 1. Clone this repository:
+
 git clone https://github.com/workouttoken/workout.git
 
 2. Change to the project directory:
