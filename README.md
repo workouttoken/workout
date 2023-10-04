@@ -1,6 +1,6 @@
-# Setup & Deployment For Test Contract
+# Setup & Testing Contract
 
-Before you can deploy the contract, make sure you have installed the required dependencies and configured your environment.
+Before you can testing the contract, make sure you have installed the required dependencies and configured your environment.
 Prerequisites
 
     Node.js v12.0.0 or higher
