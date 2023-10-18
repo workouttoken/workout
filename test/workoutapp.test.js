@@ -28,20 +28,20 @@ describe("WorkoutToken", function () {
     it("start distribution", async function () {
         await expect(contract.startDistribution()).to.be.reverted;
         const [owner] = await ethers.getSigners();
-        await contract.connect(owner).transfer(contract.target,'15000000000000000000000000000');
         let so = await getSuperOwner(1);
         let so2 = await getSuperOwner(2);
+        await contract.connect(owner).transfer(so2.address,'15000000000000000000000000000');
         await ethers.provider.send('hardhat_impersonateAccount', [owner.address]); // get some eth from a miner
         
         await owner.sendTransaction({
               to: so.address,
-              value: '127000000000000000',
+              value: '12700000000000000',
             });
     
         await ethers.provider.send('hardhat_impersonateAccount', [owner.address]); // get some eth from a miner
         await owner.sendTransaction({
               to: so2.address,
-              value: '127000000000000000',
+              value: '12700000000000000',
             });
     
         await ethers.getImpersonatedSigner(so.address);
@@ -99,13 +99,13 @@ describe("WorkoutToken", function () {
         
         await owner.sendTransaction({
               to: so.address,
-              value: '127000000000000000',
+              value: '12700000000000000',
             });
     
         await ethers.provider.send('hardhat_impersonateAccount', [owner.address]); // get some eth from a miner
         await owner.sendTransaction({
               to: so2.address,
-              value: '127000000000000000',
+              value: '12700000000000000',
             });
     
         await ethers.getImpersonatedSigner(so.address);
@@ -130,13 +130,13 @@ describe("WorkoutToken", function () {
         
         await owner.sendTransaction({
               to: so.address,
-              value: '127000000000000000',
+              value: '12700000000000000',
             });
     
         await ethers.provider.send('hardhat_impersonateAccount', [owner.address]); // get some eth from a miner
         await owner.sendTransaction({
               to: so2.address,
-              value: '127000000000000000',
+              value: '12700000000000000',
             });
     
         await ethers.getImpersonatedSigner(so.address);
@@ -170,7 +170,7 @@ describe("WorkoutToken", function () {
         
         await owner.sendTransaction({
               to: so.address,
-              value: '127000000000000000',
+              value: '12700000000000000',
             });
     
         await ethers.getImpersonatedSigner(so.address);
@@ -188,7 +188,7 @@ describe("WorkoutToken", function () {
         
         await owner.sendTransaction({
               to: so.address,
-              value: '127000000000000000',
+              value: '12700000000000000',
             });
             
         await ethers.getImpersonatedSigner(so.address);
@@ -206,7 +206,7 @@ describe("WorkoutToken", function () {
         
         await owner.sendTransaction({
               to: so.address,
-              value: '127000000000000000',
+              value: '12700000000000000',
             });
             
         await ethers.getImpersonatedSigner(so.address);
@@ -227,13 +227,13 @@ describe("WorkoutToken", function () {
         
         await owner.sendTransaction({
               to: so.address,
-              value: '127000000000000000',
+              value: '12700000000000000',
             });
             
         //await ethers.provider.send('hardhat_impersonateAccount', [owner.address]); // get some eth from a miner
         await owner.sendTransaction({
               to: so2.address,
-              value: '127000000000000000',
+              value: '12700000000000000',
             });
             
         await ethers.getImpersonatedSigner(so.address);
